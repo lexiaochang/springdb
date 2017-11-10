@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="springdb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="springdb.war">
+      <element id="artifact" artifact-name="springdb:war exploded" />
+    </root>
+  </artifact>
+</component>
