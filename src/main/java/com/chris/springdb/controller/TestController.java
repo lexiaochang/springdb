@@ -1,12 +1,14 @@
 package com.chris.springdb.controller;
 
+import com.chris.springdb.model.TestModel;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,10 +34,29 @@ public class TestController {
     public String foo2(@ApiParam(value = "用户名", required = true) @RequestParam String name) {
         return name;
     }
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String create(@RequestBody String data){
 
-        return data;
+    /*@ResponseBody String name 会打印整个post内容 用&分开*/
+    @RequestMapping(value = "/test01", method = RequestMethod.POST)
+    @ResponseBody
+    public String test01(@RequestParam String name,@RequestParam String password){
+
+        return name+"]]]]"+password;
+    }
+
+    @RequestMapping(value = "/test02", method = RequestMethod.POST)
+    @ResponseBody
+    public String test02(@RequestParam String name, @RequestParam String password) throws JsonProcessingException {
+
+        TestModel dog = new TestModel(name,password);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonString=objectMapper.writeValueAsString(dog);
+        return jsonString;
+    }
+
+    @RequestMapping(value = "/test03", method = RequestMethod.POST)
+    @ResponseBody
+    public TestModel test03(@RequestParam String name, @RequestParam String password){
+        TestModel testModel = new TestModel(name,password);
+        return testModel;
     }
 }
