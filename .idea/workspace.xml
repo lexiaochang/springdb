@@ -6,24 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="594c2090-2477-4f8a-845b-0423a496f650" name="Default" comment="添加连接数据库注释">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/entity/PersonEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/repository/DomainRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/repository/PersonRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/repository/impl/PersonRepositoryImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/service/PersonService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/service/impl/PersonServiceImpl.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/chris/springdb/model/TestModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/springdb/WEB-INF/classes/com/chris/springdb/model/TestModel.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/chris/springdb/model/TestModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/entity/TestEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/chris/springdb/controller/TestController.class" afterPath="$PROJECT_DIR$/target/classes/com/chris/springdb/controller/TestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/springdb/WEB-INF/classes/com/chris/springdb/controller/TestController.class" afterPath="$PROJECT_DIR$/target/springdb/WEB-INF/classes/com/chris/springdb/controller/TestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/springdb_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/springdb_war_exploded.xml" />
+    <list default="true" id="594c2090-2477-4f8a-845b-0423a496f650" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/springdb.iml" afterPath="$PROJECT_DIR$/springdb.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/springdb/controller/ConnecrDBController.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/controller/ConnecrDBController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/springdb/controller/TestController.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/controller/TestController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -71,8 +55,8 @@
       <file leaf-file-name="spring-servlet.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="47" column="23" lean-forward="true" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+            <state relative-caret-position="370">
+              <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -686,11 +670,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510557849658</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="添加连接数据库注释">
+      <created>1510564781567</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1510564781567</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26831000" />
+    <option name="totallyTimeSpent" value="27799000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -778,6 +769,17 @@
               </option>
               <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
                 <collection />
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
               </option>
               <option name="COLUMN_ORDER">
                 <list>
@@ -1321,8 +1323,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="47" column="23" lean-forward="true" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+        <state relative-caret-position="370">
+          <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
           <folding />
         </state>
       </provider>
