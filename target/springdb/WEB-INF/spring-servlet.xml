@@ -11,102 +11,88 @@
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-  <!--指明 controller 所在包，并扫描其中的注解-->
-  <context:component-scan base-package="com.chris.springdb"/>
+    <!--指明 controller 所在包，并扫描其中的注解-->
+    <!-- 自动扫描 -->
+    <context:component-scan base-package="com.chris.springdb">
+    </context:component-scan>
+    <!--扫描配置文件(这里指向的是之前配置的那个config.properties)-->
+    <context:property-placeholder location="classpath:/config.properties"/>
 
-  <!-- 静态资源(js、image等)的访问 -->
-  <mvc:default-servlet-handler/>
+    <!-- 静态资源(js、image等)的访问 -->
+    <mvc:default-servlet-handler/>
 
-  <!-- 开启注解 -->
-  <mvc:annotation-driven/>
+    <!-- 开启注解 -->
+    <mvc:annotation-driven/>
+    
 
-  <!--ViewResolver 视图解析器-->
-  <!--用于支持Servlet、JSP视图解析-->
-  <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-    <property name="prefix" value="/WEB-INF/pages/"/>
-    <property name="suffix" value=".jsp"/>
-  </bean>
+    <!--配置数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />  <!--数据库连接驱动-->
+        <property name="jdbcUrl" value="${jdbc.url}" />     <!--数据库地址-->
+        <property name="user" value="${jdbc.username}" />   <!--用户名-->
+        <property name="password" value="${jdbc.password}" />   <!--密码-->
+        <property name="maxPoolSize" value="40" />      <!--最大连接数-->
+        <property name="minPoolSize" value="1" />       <!--最小连接数-->
+        <property name="initialPoolSize" value="10" />      <!--初始化连接池内的数据库连接-->
+        <property name="maxIdleTime" value="20" />  <!--最大空闲时间-->
+    </bean>
 
-  <!-- 表示JPA Repository所在的包 -->
-  <jpa:repositories base-package="com.chris.springdb"/>
+    <!--配置session工厂-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.chris.springdb" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop> <!--hibernate根据实体自动生成数据库表-->
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>   <!--指定数据库方言-->
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>     <!--在控制台显示执行的数据库操作语句-->
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>     <!--在控制台显示执行的数据哭操作语句（格式）-->
+            </props>
+        </property>
+    </bean>
 
-  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-    <property name="persistenceUnitName" value="defaultPersistenceUnit"/>
-    <property name="packagesToScan" value="com.chris.springdb" />
-    <property name="jpaVendorAdapter">
-      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-    </property>
-    <property name="jpaProperties">
-      <props>
-        <!--配置数据库的驱动程序，Hibernate在连接数据库时，需要用到数据库的驱动程序-->
-        <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
-        <!--设置数据库的连接url:jdbc:mysql://localhost/hibernate,其中localhost表示mysql服务器名称，此处为本机，    hibernate是数据库名-->
-        <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate</prop>
-        <!--连接数据库是用户名-->
-        <prop key="hibernate.connection.username">root</prop>
-        <!--连接数据库是密码-->
-        <prop key="hibernate.connection.password">111111</prop>
-        <!--是否在后台显示Hibernate用到的SQL语句，开发时设置为true，便于查错，程序运行时可以在Eclipse的控制台显示Hibernate的执行Sql语句。项目部署后可以设置为false，提高运行效率-->
-        <prop key="hibernate.show_sql">true</prop>
-        <!--connection.useUnicode 连接数据库时是否使用Unicode编码-->
-        <prop key="hibernate.connection.useUnicode">true</prop>
-        <prop key="hibernate.connection.characterEncoding">UTF-8</prop>
-        <prop key="hibernate.format_sql">true</prop>
-        <!-- 输出格式化后的sql,更方便查看    -->
-        <prop key="hibernate.use_sql_comments">true</prop>
-        <prop key="hibernate.hbm2ddl.auto">update</prop>
-        <prop key="hibernate.connection.autoReconnect">true</prop>
-        <!--hibernate.dialect 只是Hibernate使用的数据库方言,就是要用Hibernate连接那种类型的数据库服务器。-->
-        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-        <prop key="connection.autoReconnectForPools">true</prop>
-        <prop key="connection.is-connection-validation-required">true</prop>
+    <!-- 事物管理器配置  -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
 
-        <prop key="hibernate.c3p0.validate">true</prop>
-        <prop key="hibernate.connection.provider_class">org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider</prop>
-        <!--数据库连接池的大小-->
-        <prop key="hibernate.c3p0.min_size">5</prop>
-        <prop key="hibernate.c3p0.max_size">600</prop>
-        <prop key="hibernate.c3p0.timeout">1800</prop>
-        <prop key="hibernate.c3p0.max_statements">50</prop>
-        <prop key="hibernate.c3p0.preferredTestQuery">SELECT 1;</prop>
-        <prop key="hibernate.c3p0.testConnectionOnCheckout">true</prop>
-        <prop key="hibernate.c3p0.idle_test_period">3000</prop>
-      </props>
-    </property>
-  </bean>
-  <!-- rest json related... start -->
-  <bean id="mappingJacksonHttpMessageConverter"
-        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-    <property name="supportedMediaTypes">
-      <list>
-        <value>application/json;charset=UTF-8</value>
-      </list>
-    </property>
-  </bean>
-  <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-    <property name="messageConverters">
-      <list>
-        <ref bean="mappingJacksonHttpMessageConverter"/>
-      </list>
-    </property>
-  </bean>
-  <!-- rest json related... end -->
-  <!-- 事务管理 -->
-  <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-    <property name="entityManagerFactory" ref="entityManagerFactory"/>
-  </bean>
+    <!--ViewResolver 视图解析器-->
+    <!--用于支持Servlet、JSP视图解析-->
+    <bean id="jspViewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
-  <!-- 开启事务管理注解 -->
-  <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!-- rest json related... start -->
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+    <!-- rest json related... end -->
 
-  <mvc:annotation-driven>
-    <!-- 自定义消息转换器 -->
-    <mvc:message-converters register-defaults="true">
-      <!-- 自定义消息转换器，设置编码为utf-8，防止responseEntity<String>转换成json对象输出乱码 -->
-      <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-        <constructor-arg index="0" value="utf-8"></constructor-arg>
-      </bean>
-    </mvc:message-converters>
-  </mvc:annotation-driven>
+    <!-- 开启事务管理注解 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <mvc:annotation-driven>
+        <!-- 自定义消息转换器 -->
+        <mvc:message-converters register-defaults="true">
+            <!-- 自定义消息转换器，设置编码为utf-8，防止responseEntity<String>转换成json对象输出乱码 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg index="0" value="utf-8"></constructor-arg>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 </beans>
