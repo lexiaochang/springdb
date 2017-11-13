@@ -1,6 +1,6 @@
 package com.chris.springdb.controller;
 
-import com.chris.springdb.model.TestModel;
+import com.chris.springdb.entity.TestEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -73,8 +73,8 @@ public class TestController {
 
     @RequestMapping(value = "/test03", method = RequestMethod.POST)
     @ResponseBody
-    public TestModel test03(@RequestParam String name, @RequestParam String password) {
-        TestModel testModel = new TestModel(name, password);
+    public TestEntity test03(@RequestParam String name, @RequestParam String password) {
+        TestEntity testModel = new TestEntity(name, password);
         return testModel;
     }
 

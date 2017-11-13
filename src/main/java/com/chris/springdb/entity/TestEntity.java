@@ -1,14 +1,14 @@
-package com.chris.springdb.model;
+package com.chris.springdb.entity;
 
 /**
  * Created by Chris on 2017/11/10.
  */
 
-public class TestModel {
+public class TestEntity {
     String firstName;
     String lastName;
 
-    public TestModel(String firstName, String lastName) {
+    public TestEntity(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
