@@ -11,6 +11,11 @@
     <properties>
         <spring.version>4.3.12.RELEASE</spring.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
+        <mysqlVersion>6.0.3</mysqlVersion>
+        <c3p0Version>0.9.1.2</c3p0Version>
+        <log4jVersion>1.2.17</log4jVersion>
+        <fileuploadVersion>1.3.1</fileuploadVersion>
+        <lombokVersion>1.16.10</lombokVersion>
     </properties>
     <dependencies>
         <dependency>
@@ -63,11 +68,11 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
+        <!-- DataBase数据库连接 mysql包-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.39</version>
+            <version>${mysqlVersion}</version>
         </dependency>
         <!--HttpServletRequest-->
         <dependency>
@@ -114,10 +119,33 @@
             <artifactId>gson</artifactId>
             <version>2.3.1</version>
         </dependency>
+        <!-- 数据库连接池-->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.39</version>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0Version}</version>
+        </dependency>
+
+        <!-- log4j配置, 视情况添加-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4jVersion}</version>
+        </dependency>
+
+        <!--文件 上传-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${fileuploadVersion}</version>
+        </dependency>
+
+        <!-- lombok插件导包-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombokVersion}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.velocity</groupId>
