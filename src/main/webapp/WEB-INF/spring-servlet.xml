@@ -42,11 +42,11 @@
         <!--配置数据库的驱动程序，Hibernate在连接数据库时，需要用到数据库的驱动程序-->
         <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
         <!--设置数据库的连接url:jdbc:mysql://localhost/hibernate,其中localhost表示mysql服务器名称，此处为本机，    hibernate是数据库名-->
-        <prop key="hibernate.connection.url">jdbc:mysql://localhost/hibernate</prop>
+        <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate</prop>
         <!--连接数据库是用户名-->
-        <prop key="hibernate.connection.username">chris</prop>
+        <prop key="hibernate.connection.username">root</prop>
         <!--连接数据库是密码-->
-        <prop key="hibernate.connection.password">chris123</prop>
+        <prop key="hibernate.connection.password">111111</prop>
         <!--是否在后台显示Hibernate用到的SQL语句，开发时设置为true，便于查错，程序运行时可以在Eclipse的控制台显示Hibernate的执行Sql语句。项目部署后可以设置为false，提高运行效率-->
         <prop key="hibernate.show_sql">true</prop>
         <!--connection.useUnicode 连接数据库时是否使用Unicode编码-->
