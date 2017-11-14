@@ -38,28 +38,44 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     public void persist(PersonEntity entity) {
-        getCurrentSession().persist(entity);
+        Session currentSession = getCurrentSession();
+        Transaction transaction = currentSession.beginTransaction();
+        currentSession.persist(entity);
+        transaction.commit();
+        currentSession.close();
     }
 
     public Long save(PersonEntity entity) {
         Session currentSession = getCurrentSession();
         Transaction transaction = currentSession.beginTransaction();
-        currentSession.save(entity);
+        Long save = (Long) currentSession.save(entity);
         transaction.commit();
         currentSession.close();
-        return null;
+        return save;
     }
 
     public void saveOrUpdate(PersonEntity entity) {
-        getCurrentSession().saveOrUpdate(entity);
+        Session currentSession = getCurrentSession();
+        Transaction transaction = currentSession.beginTransaction();
+        currentSession.saveOrUpdate(entity);
+        transaction.commit();
+        currentSession.close();
     }
 
     public void delete(Long id) {
+        Session currentSession = getCurrentSession();
+        Transaction transaction = currentSession.beginTransaction();
         PersonEntity person = load(id);
-        getCurrentSession().delete(person);
+        currentSession.delete(person);
+        transaction.commit();
+        currentSession.close();
     }
 
     public void flush() {
-        getCurrentSession().flush();
+        Session currentSession = getCurrentSession();
+        Transaction transaction = currentSession.beginTransaction();
+        currentSession.flush();
+        transaction.commit();
+        currentSession.close();
     }
 }
