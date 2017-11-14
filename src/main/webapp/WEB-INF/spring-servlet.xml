@@ -15,8 +15,6 @@
     <!-- 自动扫描 -->
     <context:component-scan base-package="com.chris.springdb">
     </context:component-scan>
-    <!--扫描配置文件(这里指向的是之前配置的那个config.properties)-->
-    <context:property-placeholder location="classpath:/config.properties"/>
 
     <!-- 静态资源(js、image等)的访问 -->
     <mvc:default-servlet-handler/>
@@ -24,6 +22,8 @@
     <!-- 开启注解 -->
     <mvc:annotation-driven/>
 
+    <!--扫描配置文件(这里指向的是之前配置的那个config.properties)-->
+    <context:property-placeholder location="classpath:/config.properties"/>
 
     <!--配置数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
