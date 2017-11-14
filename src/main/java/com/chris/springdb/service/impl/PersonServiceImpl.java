@@ -17,12 +17,12 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    public Long savePerson() {
+    public Long savePerson(String username,String phone,String addrss,String remark) {
         PersonEntity person = new PersonEntity();
-        person.setUsername("XRog");
-        person.setPhone("18381005946");
-        person.setAddress("chenDu");
-        person.setRemark("this is XRog");
+        person.setUsername(username);
+        person.setPhone(phone);
+        person.setAddress(addrss);
+        person.setRemark(remark);
         return personRepository.save(person);
     }
 }

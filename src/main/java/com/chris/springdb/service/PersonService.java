@@ -5,5 +5,5 @@ package com.chris.springdb.service;
  */
 
 public interface PersonService {
-    Long savePerson();
+    Long savePerson(String username,String phone,String addrss,String remark);
 }

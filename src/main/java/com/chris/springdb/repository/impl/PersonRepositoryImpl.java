@@ -5,6 +5,7 @@ import com.chris.springdb.repository.PersonRepository;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -41,7 +42,12 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     public Long save(PersonEntity entity) {
-        return (Long)getCurrentSession().save(entity);
+        Session currentSession = getCurrentSession();
+        Transaction transaction = currentSession.beginTransaction();
+        currentSession.save(entity);
+        transaction.commit();
+        currentSession.close();
+        return null;
     }
 
     public void saveOrUpdate(PersonEntity entity) {
