@@ -9,10 +9,6 @@
     <list default="true" id="594c2090-2477-4f8a-845b-0423a496f650" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/springdb/controller/ConnecrDBController.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/controller/ConnecrDBController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/springdb/repository/impl/PersonRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/repository/impl/PersonRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/springdb/service/PersonService.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/service/PersonService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/chris/springdb/service/impl/PersonServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/chris/springdb/service/impl/PersonServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/springdb/WEB-INF/spring-servlet.xml" afterPath="$PROJECT_DIR$/target/springdb/WEB-INF/spring-servlet.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -67,8 +63,8 @@
       <file leaf-file-name="ConnecrDBController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/springdb/controller/ConnecrDBController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+            <state relative-caret-position="327">
+              <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#connectdb01#0;class#ConnecrDBController#0" expanded="true" />
@@ -633,7 +629,7 @@
       <workItem from="1510560331885" duration="24000" />
       <workItem from="1510560465116" duration="527000" />
       <workItem from="1510571276202" duration="430000" />
-      <workItem from="1510622543712" duration="3878000" />
+      <workItem from="1510622543712" duration="4200000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1510306194922</created>
@@ -698,11 +694,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510623292585</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="存数据到指定表">
+      <created>1510626451054</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1510626451054</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36380000" />
+    <option name="totallyTimeSpent" value="36702000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -801,7 +804,8 @@
     <MESSAGE value="添加连接数据库注释" />
     <MESSAGE value="更改事物管理器配置" />
     <MESSAGE value="数据库配置更改" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据库配置更改" />
+    <MESSAGE value="存数据到指定表" />
+    <option name="LAST_COMMIT_MESSAGE" value="存数据到指定表" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1222,8 +1226,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chris/springdb/controller/ConnecrDBController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+        <state relative-caret-position="327">
+          <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#connectdb01#0;class#ConnecrDBController#0" expanded="true" />

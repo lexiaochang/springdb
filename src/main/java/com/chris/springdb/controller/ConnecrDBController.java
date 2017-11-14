@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Chris on 2017/11/13.
  */
@@ -27,10 +29,12 @@ public class ConnecrDBController {
 
     @RequestMapping(value = "savePerson", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public ResponseEntity<String> savePerson(@RequestHeader("Host") String host, @RequestParam String username, @RequestParam String phone, @RequestParam String addrss, @RequestParam String remark) {
+    public ResponseEntity<String> savePerson(HttpServletRequest httpServletRequest,@RequestHeader("Host") String host,@RequestParam String username, @RequestParam String phone, @RequestParam String addrss, @RequestParam String remark) {
         personService.savePerson(username, phone, addrss, remark);
+        String token = httpServletRequest.getHeader("token");
         JSONObject json = new JSONObject();
         try {
+            json.put("token", token);
             json.put("host", host);
             json.put("username", username);
             json.put("phone", phone);
