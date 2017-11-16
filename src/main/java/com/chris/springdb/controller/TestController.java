@@ -42,9 +42,12 @@ public class TestController {
         return name;
     }
 
-    /*@ResponseBody String name 会打印整个post内容 用&分开
-    * http://10.11.26.27:8080/user/test01?name=aaa&password=bbb
-    * */
+    /**
+     * @ResponseBody String name 会打印整个post内容 用&分开
+     * http://10.11.26.27:8080/user/test01?name=aaa&password=bbb
+     *
+     */
+
     @RequestMapping(value = "/test01", method = RequestMethod.GET)
     @ResponseBody
     public String test01(@RequestParam String name, @RequestParam String password) {
